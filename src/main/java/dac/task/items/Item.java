@@ -29,4 +29,8 @@ public class Item {
     Integer startAmountInCents;
 
     Integer bidAmountInCents;
+
+    Integer startAmountInPln;
+
+    Integer bidAmountInPln;
 }

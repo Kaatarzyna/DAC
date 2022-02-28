@@ -4,6 +4,7 @@ import dac.task.auctions.Auction;
 import dac.task.auctions.AuctionRepository;
 import dac.task.exceptions.AuctionNotFoundException;
 import dac.task.exceptions.ItemNotFoundException;
+import dac.task.integrations.CurrencyService;
 import dac.task.items.mappers.ItemCreateDTO;
 import dac.task.items.mappers.ItemFullDTO;
 import dac.task.items.mappers.ItemMapper;
@@ -21,10 +22,13 @@ public class ItemService {
 
     final AuctionRepository auctionRepository;
 
-    public ItemService(ItemRepository itemRepository, ItemMapper itemMapper, AuctionRepository auctionRepository) {
+    final CurrencyService currencyService;
+
+    public ItemService(ItemRepository itemRepository, ItemMapper itemMapper, AuctionRepository auctionRepository, CurrencyService currencyService) {
         this.itemRepository = itemRepository;
         this.itemMapper = itemMapper;
         this.auctionRepository = auctionRepository;
+        this.currencyService = currencyService;
     }
 
     List<ItemSlimDTO> findItemsOnAuction(UUID id) {
@@ -44,6 +48,7 @@ public class ItemService {
 
         Item item = itemMapper.createDtoToItem(itemDTO);
         item.auction = auction;
+        item.startAmountInPln = currencyService.convertToPln(item.startAmountInCents);
 
         return itemMapper.itemToDto(itemRepository.save(item));
     }
