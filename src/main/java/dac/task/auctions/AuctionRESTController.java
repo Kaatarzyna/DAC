@@ -5,6 +5,7 @@ import dac.task.auctions.mappers.AuctionSlimDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.UUID;
 
@@ -20,7 +21,7 @@ public class AuctionRESTController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    Auction create(@RequestBody AuctionFullDTO auctionDTO) {
+    Auction create(@RequestBody @Valid AuctionFullDTO auctionDTO) {
         return auctionService.save(auctionDTO);
     }
 

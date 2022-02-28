@@ -6,6 +6,7 @@ import dac.task.items.mappers.ItemSlimDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.UUID;
 
@@ -21,7 +22,7 @@ public class ItemRESTController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    Item create(@RequestBody ItemCreateDTO itemDTO) {
+    ItemFullDTO create(@RequestBody @Valid ItemCreateDTO itemDTO) {
         return itemService.save(itemDTO);
     }
 

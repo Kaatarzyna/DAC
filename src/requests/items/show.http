@@ -1,1 +1,1 @@
-GET http://localhost:8080/items/123
+GET http://localhost:8080/items/eba0db6c-735f-4185-97d8-0a1b86e0ccfd

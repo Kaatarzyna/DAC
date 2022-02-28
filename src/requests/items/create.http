@@ -2,8 +2,8 @@ POST http://localhost:8080/items
 Content-Type: application/json
 
 {
-  "auctionId": "e46c4ef3-9ef1-4b91-a6d8-a987aba68a6b",
-  "name": "COŚ JESZCZE",
-  "description": "Salvador Dali",
-  "startAmountInCents": 1000
+  "auctionId": "514e97ba-f253-4ba4-b226-a6f77a251c2d",
+  "name": "XX",
+  "description": "XX",
+  "startAmountInCents": 10
 }

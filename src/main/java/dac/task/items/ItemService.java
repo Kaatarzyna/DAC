@@ -39,12 +39,12 @@ public class ItemService {
         return itemMapper.itemToDto(item);
     }
 
-    Item save(ItemCreateDTO itemDTO) {
+    ItemFullDTO save(ItemCreateDTO itemDTO) {
         Auction auction = auctionRepository.findById(itemDTO.getAuctionId()).orElseThrow(AuctionNotFoundException::new);
 
         Item item = itemMapper.createDtoToItem(itemDTO);
         item.auction = auction;
 
-        return itemRepository.save(item);
+        return itemMapper.itemToDto(itemRepository.save(item));
     }
 }
