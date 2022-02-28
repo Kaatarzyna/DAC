@@ -2,7 +2,7 @@ POST http://localhost:8080/items
 Content-Type: application/json
 
 {
-  "auctionId": "514e97ba-f253-4ba4-b226-a6f77a251c2d",
+  "auctionId": "16def9c5-45cf-4e77-8ba3-694ffb288488",
   "name": "XX",
   "description": "XX",
   "startAmountInCents": 10

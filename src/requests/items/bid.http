@@ -1,0 +1,7 @@
+PUT http://localhost:8080/bid
+Content-Type: application/json
+
+{
+  "amount": 11,
+  "itemId": "c73feffe-58d1-49a6-aa10-f711d05981ec"
+}

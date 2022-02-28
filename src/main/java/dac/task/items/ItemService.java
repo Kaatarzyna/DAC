@@ -2,6 +2,7 @@ package dac.task.items;
 
 import dac.task.auctions.Auction;
 import dac.task.auctions.AuctionRepository;
+import dac.task.bidding.BidDTO;
 import dac.task.exceptions.AuctionNotFoundException;
 import dac.task.exceptions.ItemNotFoundException;
 import dac.task.integrations.CurrencyService;
@@ -51,5 +52,15 @@ public class ItemService {
         item.startAmountInPln = currencyService.convertToPln(item.startAmountInCents);
 
         return itemMapper.itemToDto(itemRepository.save(item));
+    }
+
+    public void bid(BidDTO bid) {
+        Item item = itemRepository.findById(bid.getItemId()).orElseThrow(ItemNotFoundException::new);
+
+        Integer amount = bid.getAmount();
+        item.bidAmountInCents = amount;
+        item.bidAmountInPln = currencyService.convertToPln(amount);
+
+        itemRepository.save(item);
     }
 }
