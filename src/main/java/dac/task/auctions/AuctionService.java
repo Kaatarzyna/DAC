@@ -3,6 +3,7 @@ package dac.task.auctions;
 import dac.task.auctions.mappers.AuctionFullDTO;
 import dac.task.auctions.mappers.AuctionMapper;
 import dac.task.auctions.mappers.AuctionSlimDTO;
+import dac.task.exceptions.AuctionNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,7 +26,7 @@ public class AuctionService {
     }
 
     AuctionFullDTO find(UUID id) {
-        Auction auction = auctionRepository.findById(id).orElse(null);
+        Auction auction = auctionRepository.findById(id).orElseThrow(AuctionNotFoundException::new);
         return auctionMapper.auctionToDto(auction);
     }
 

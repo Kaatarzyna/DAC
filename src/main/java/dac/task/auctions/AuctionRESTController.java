@@ -2,6 +2,7 @@ package dac.task.auctions;
 
 import dac.task.auctions.mappers.AuctionFullDTO;
 import dac.task.auctions.mappers.AuctionSlimDTO;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,6 +19,7 @@ public class AuctionRESTController {
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     Auction create(@RequestBody AuctionFullDTO auctionDTO) {
         return auctionService.save(auctionDTO);
     }
