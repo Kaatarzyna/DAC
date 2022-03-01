@@ -2,12 +2,20 @@ version: "3.3"
 
 services:
   db:
-    build: db
+    build:
+      context: db
+      args:
+      - SA_PASSWORD=${DATABASE_PASSWORD}
     environment:
-      - SA_PASSWORD=Your_password123
+      - SA_PASSWORD=${DATABASE_PASSWORD}
       - ACCEPT_EULA=Y
   dac:
-    build: .
+    build:
+      context: .
+      args:
+      - DATABASE_PASSWORD=${DATABASE_PASSWORD}
+    environment:
+      - DATABASE_PASSWORD=${DATABASE_PASSWORD}
     depends_on:
       - db
     ports:
