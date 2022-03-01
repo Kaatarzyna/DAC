@@ -25,9 +25,9 @@ public class ItemFullDTO {
     @JsonProperty("bidAmountInCents")
     Integer bidAmountInCents;
 
-    @JsonProperty("startAmountInPLN")
-    Integer startAmountInPLN;
+    @JsonProperty("startAmountInPln")
+    Integer startAmountInPln;
 
-    @JsonProperty("bidAmountInPLN")
-    Integer bidAmountInPLN;
+    @JsonProperty("bidAmountInPln")
+    Integer bidAmountInPln;
 }
